@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="ejb"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="response" value="init" scope="default" type="STRING"/>
+         <log level="custom">
+            <property name="response" value="{//name}"/>
+         </log>
+         <ejb beanstalk="jack"
+              class="org.NewBeanRemote"
+              method="sayHello"
+              target="response"
+              jndiName="ejb:/EJBModule3/NewBean!org.NewBeanRemote">
+            <args>
+               <arg xmlns:m="http://org" value="{//m:name}"/>
+            </args>
+         </ejb>
+         <payloadFactory media-type="xml">
+            <format>
+               <ejb xmlns="">
+                  <response>$ctx.response</response>
+               </ejb>
+            </format>
+            <args/>
+         </payloadFactory>
+         <respond/>
+      </inSequence>
+   </target>
+   <description/>
+</proxy>

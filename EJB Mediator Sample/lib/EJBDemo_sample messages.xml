@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <sayHello xmlns="http://org">
+<name>rajjaz</name>
+    </sayHello>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ejb>
+         <response>Hello rajjaz</response>
+      </ejb>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+
